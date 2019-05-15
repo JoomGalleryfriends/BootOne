@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<changelog>
+<release version="3.0.0 BETA1" published="20190415">
+    <entries date="20190415">
+      <logentry type="+">Add quickedit in user panel</logentry>
+      <logentry type="+">Add Icomoon Fonts</logentry>
+    </entries>
+  </release>
+  <release version="ALPHA5" published="20150617">
+  </release>
+</changelog>
