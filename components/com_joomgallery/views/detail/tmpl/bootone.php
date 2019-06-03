@@ -775,6 +775,9 @@
 <?php   $this->_doc->addScriptDeclaration(
           "
             jQuery(window).load(function(){
+              jQuery('#" . $this->collapsible . "').collapse({
+                parent: '#jg-details-accordion'
+              });
               jQuery('#" . $this->collapsible . "').collapse('toggle');
             });"
         ); ?>
