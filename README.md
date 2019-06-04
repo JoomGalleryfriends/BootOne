@@ -4,7 +4,7 @@ Responsive Layout for JoomGallery based on Bootstrap.
 ### Note
 This is work in progress and far from being finished. Please provide feedback, any comments suggestions are welcome!
 
-This layout is optimized for Bootstrap 2.x which is currently shipped with Joomla! 3.x by default. If your template uses Bootstrap 3.x instead please have a look at https://github.com/JoomGallery/BootOne/tree/BootThree instead.
+This layout is optimized for Bootstrap 2.x which is currently shipped with Joomla! 3.x by default. If your template uses Bootstrap 3.x instead please have a look at https://github.com/JoomGalleryfriends/BootOne/tree/BootThree instead.
 
 ### How to use
 - Download the zip archive of this repository and install it via the extension manager of Joomla.
