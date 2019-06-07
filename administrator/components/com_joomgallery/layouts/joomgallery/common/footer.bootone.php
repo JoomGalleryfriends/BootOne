@@ -65,7 +65,7 @@
 <?php endif;
       if($displayData->params->get('show_credits')): ?>
   <div class="jg-powered-by text-center">
-    <a href="http://www.joomgallery.net" target="_blank">
+    <a href="https://www.joomgalleryfriends.net" target="_blank">
       <img src="<?php echo JoomAmbit::getInstance()->getIcon('powered_by.gif'); ?>" alt="Powered by JoomGallery" />
     </a>
   </div>
