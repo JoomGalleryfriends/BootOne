@@ -1,15 +1,30 @@
-<?php defined('_JEXEC') or die('Direct Access to this location is not allowed.');
+<?php defined('_JEXEC') or die('Direct Access to this location is not allowed.'); ?>
+<?php
+  $this->accordionEnabled     = false;
+  $this->accordiondisplay     = 0;
+  $this->accordiondisplayCnt  = 0;
+  $this->collapsible          = "";
 
-      $this->accordionEnabled = false;
-      if($this->slider && ($this->_config->get('jg_showdetail') || $this->params->get('show_detailpane_modules')
-      || $this->params->get('show_exifdata') || $this->params->get('show_map') || $this->params->get('show_iptcdata')
-      || $this->params->get('show_voting_area') || $this->params->get('show_bbcode')
-      || $this->params->get('show_comments_block') || $this->params->get('show_send2friend_block'))):
-        $this->accordionEnabled = true;
-        $this->toggler = '<h4 class="accordion-toggle"><a data-toggle="collapse" data-parent="#jg-details-accordion" href="#jg-details-collapse%1$s" aria-expanded="false" aria-controls="jg-details-collapse%1$s">%2$s</a></h4>';
-        $this->slider = ' id="jg-details-collapse%1$s" class="panel-collapse collapse" role="tabpanel"';
-      endif;
-echo JLayoutHelper::render('joomgallery.common.header', $this, '', array('suffixes' => array('bootone'), 'client' => 1)); ?>
+  if($this->slider
+     && ($this->_config->get('jg_showdetail')
+         || $this->params->get('show_detailpane_modules')
+         || $this->params->get('show_exifdata')
+         || $this->params->get('show_map')
+         || $this->params->get('show_iptcdata')
+         || $this->params->get('show_voting_area')
+         || $this->params->get('show_bbcode')
+         || $this->params->get('show_comments_block')
+         || $this->params->get('show_send2friend_block')
+        )
+    ):
+    $this->accordionEnabled = true;
+    $this->accordiondisplay = $this->_config->get('jg_accordiondisplay');
+    $this->toggler          = '<h4 class="accordion-toggle"><a data-toggle="collapse" data-parent="#jg-details-accordion" href="#jg-details-collapse%1$s" aria-expanded="false" aria-controls="jg-details-collapse%1$s">%2$s</a></h4>';
+    $this->slider           = ' id="jg-details-collapse%1$s" class="panel-collapse collapse" role="tabpanel"';
+  endif;
+
+  echo JLayoutHelper::render('joomgallery.common.header', $this, '', array('suffixes' => array('bootone'), 'client' => 1));
+?>
   <a name="joomimg"></a>
 <?php if($this->_config->get('jg_showdetailtitle') == 1): ?>
   <div>
@@ -315,14 +330,17 @@ echo JLayoutHelper::render('joomgallery.common.header', $this, '', array('suffix
 <?php if($this->_config->get('jg_showdetail')): ?>
   <div class="accordion-group">
     <div class="accordion-heading">
-      <?php if(!empty($this->toggler)): ?>
-      <?php   echo str_replace('aria-expanded="false"', 'aria-expanded="true"', sprintf($this->toggler, 'Details', JText::_('COM_JOOMGALLERY_DETAIL_INFO'))); ?>
-      <?php else: ?>
+<?php   if(!empty($this->toggler)): ?>
+<?php     echo sprintf($this->toggler, 'Details', JText::_('COM_JOOMGALLERY_DETAIL_INFO')); ?>
+<?php   else: ?>
       <h4 class="accordion-toggle"><?php echo JText::_('COM_JOOMGALLERY_DETAIL_INFO'); ?></h4>
-      <?php endif; ?>
+<?php   endif; ?>
     </div>
-    <?php if(!empty($this->slider)): ?>
-    <div <?php echo str_replace('panel-collapse collapse', 'panel-collapse collapse in', sprintf($this->slider, 'Details')); ?>>
+<?php   if(!empty($this->slider)): ?>
+    <div <?php echo sprintf($this->slider, 'Details'); ?>>
+<?php     if(++$this->accordiondisplayCnt == $this->accordiondisplay): ?>
+<?php       $this->collapsible = sprintf('jg-details-collapse%1$s', 'Details'); ?>
+<?php     endif; ?>
 <?php   endif; ?>
       <div class="accordion-inner">
         <dl class="dl-horizontal">
@@ -408,14 +426,17 @@ echo JLayoutHelper::render('joomgallery.common.header', $this, '', array('suffix
         foreach($this->modules['detailpane'] as $key => $module): ?>
   <div class="accordion-group">
     <div class="accordion-heading">
-      <?php if(!empty($this->toggler)): ?>
-      <?php   echo sprintf($this->toggler, 'Module'.$key, $module->title); ?>
-      <?php else: ?>
+<?php     if(!empty($this->toggler)): ?>
+<?php       echo sprintf($this->toggler, 'Module'.$key, $module->title); ?>
+<?php     else: ?>
       <h4 class="accordion-toggle"><?php echo $module->title; ?></h4>
-      <?php endif; ?>
+<?php     endif; ?>
     </div>
 <?php     if(!empty($this->slider)): ?>
     <div <?php echo sprintf($this->slider, 'Module'.$key); ?>>
+<?php       if(++$this->accordiondisplayCnt == $this->accordiondisplay): ?>
+<?php         $this->collapsible = sprintf('jg-details-collapse%1$s', 'Module'.$key); ?>
+<?php       endif; ?>
 <?php     endif; ?>
       <div class="accordion-inner">
         <?php echo $module->rendered; ?>
@@ -429,14 +450,17 @@ echo JLayoutHelper::render('joomgallery.common.header', $this, '', array('suffix
       if($this->params->get('show_exifdata')): ?>
   <div class="accordion-group">
     <div class="accordion-heading">
-      <?php if(!empty($this->toggler)): ?>
-      <?php   echo sprintf($this->toggler, 'Exif', JText::_('COM_JOOMGALLERY_EXIF_DATA')); ?>
-      <?php else: ?>
+<?php   if(!empty($this->toggler)): ?>
+<?php     echo sprintf($this->toggler, 'Exif', JText::_('COM_JOOMGALLERY_EXIF_DATA')); ?>
+<?php   else: ?>
       <h4 class="accordion-toggle"><?php echo JText::_('COM_JOOMGALLERY_EXIF_DATA'); ?></h4>
-      <?php endif; ?>
+<?php   endif; ?>
     </div>
 <?php   if(!empty($this->slider)): ?>
     <div <?php echo sprintf($this->slider, 'Exif'); ?>>
+<?php     if(++$this->accordiondisplayCnt == $this->accordiondisplay): ?>
+<?php       $this->collapsible = sprintf('jg-details-collapse%1$s', 'Exif'); ?>
+<?php     endif; ?>
 <?php   endif; ?>
       <div class="accordion-inner">
         <?php echo $this->exifdata; ?>
@@ -449,14 +473,17 @@ echo JLayoutHelper::render('joomgallery.common.header', $this, '', array('suffix
       if($this->params->get('show_map')): ?>
   <div class="accordion-group">
     <div class="accordion-heading">
-      <?php if(!empty($this->toggler)): ?>
-      <?php   echo sprintf($this->toggler, 'Map', JText::_('COM_JOOMGALLERY_DETAIL_MAPS_GEOTAGGING')); ?>
-      <?php else: ?>
+<?php   if(!empty($this->toggler)): ?>
+<?php     echo sprintf($this->toggler, 'Map', JText::_('COM_JOOMGALLERY_DETAIL_MAPS_GEOTAGGING')); ?>
+<?php   else: ?>
       <h4 class="accordion-toggle"><?php echo JText::_('COM_JOOMGALLERY_DETAIL_MAPS_GEOTAGGING'); ?></h4>
-      <?php endif; ?>
+<?php   endif; ?>
     </div>
 <?php   if(!empty($this->slider)): ?>
     <div <?php echo sprintf($this->slider, 'Map'); ?>>
+<?php     if(++$this->accordiondisplayCnt == $this->accordiondisplay): ?>
+<?php       $this->collapsible = sprintf('jg-details-collapse%1$s', 'Map'); ?>
+<?php     endif; ?>
 <?php   endif; ?>
       <div class="accordion-inner">
         <div id="jg_geomap">
@@ -485,14 +512,17 @@ echo JLayoutHelper::render('joomgallery.common.header', $this, '', array('suffix
       if($this->params->get('show_iptcdata')): ?>
   <div class="accordion-group">
     <div class="accordion-heading">
-      <?php if(!empty($this->toggler)): ?>
-      <?php   echo sprintf($this->toggler, 'IPTC', JText::_('COM_JOOMGALLERY_IPTC_DATA')); ?>
-      <?php else: ?>
+<?php   if(!empty($this->toggler)): ?>
+<?php     echo sprintf($this->toggler, 'IPTC', JText::_('COM_JOOMGALLERY_IPTC_DATA')); ?>
+<?php   else: ?>
       <h4 class="accordion-toggle"><?php echo JText::_('COM_JOOMGALLERY_IPTC_DATA'); ?></h4>
-      <?php endif; ?>
+<?php   endif; ?>
     </div>
 <?php   if(!empty($this->slider)): ?>
     <div <?php echo sprintf($this->slider, 'IPTC'); ?>>
+<?php     if(++$this->accordiondisplayCnt == $this->accordiondisplay): ?>
+<?php       $this->collapsible = sprintf('jg-details-collapse%1$s', 'IPTC'); ?>
+<?php     endif; ?>
 <?php   endif; ?>
       <div class="accordion-inner">
         <?php echo $this->iptcdata.'&nbsp;'; ?>
@@ -505,14 +535,17 @@ echo JLayoutHelper::render('joomgallery.common.header', $this, '', array('suffix
       if($this->params->get('show_voting_area')): ?>
   <div id="jg_voting" class="accordion-group">
     <div class="accordion-heading">
-      <?php if(!empty($this->toggler)): ?>
-      <?php   echo sprintf($this->toggler, 'Voting', JText::_('COM_JOOMGALLERY_DETAIL_RATING')); ?>
-      <?php else: ?>
+<?php   if(!empty($this->toggler)): ?>
+<?php     echo sprintf($this->toggler, 'Voting', JText::_('COM_JOOMGALLERY_DETAIL_RATING')); ?>
+<?php   else: ?>
       <h4 class="accordion-toggle"><?php echo JText::_('COM_JOOMGALLERY_DETAIL_RATING'); ?></h4>
-      <?php endif; ?>
+<?php   endif; ?>
     </div>
 <?php   if(!empty($this->slider)): ?>
     <div <?php echo sprintf($this->slider, 'Voting'); ?>>
+<?php     if(++$this->accordiondisplayCnt == $this->accordiondisplay): ?>
+<?php       $this->collapsible = sprintf('jg-details-collapse%1$s', 'Voting'); ?>
+<?php     endif; ?>
 <?php   endif; ?>
       <div class="accordion-inner text-center">
 <?php   if($this->params->get('voting_message')): ?>
@@ -576,14 +609,17 @@ echo JLayoutHelper::render('joomgallery.common.header', $this, '', array('suffix
       if($this->params->get('show_bbcode')): ?>
   <div class="accordion-group">
     <div class="accordion-heading">
-      <?php if(!empty($this->toggler)): ?>
-      <?php   echo sprintf($this->toggler, 'BBCode', JText::_('COM_JOOMGALLERY_DETAIL_BBCODE_SHARE')); ?>
-      <?php else: ?>
+<?php   if(!empty($this->toggler)): ?>
+<?php     echo sprintf($this->toggler, 'BBCode', JText::_('COM_JOOMGALLERY_DETAIL_BBCODE_SHARE')); ?>
+<?php   else: ?>
       <h4 class="accordion-toggle"><?php echo JText::_('COM_JOOMGALLERY_DETAIL_BBCODE_SHARE'); ?></h4>
-      <?php endif; ?>
+<?php   endif; ?>
     </div>
 <?php   if(!empty($this->slider)): ?>
     <div <?php echo sprintf($this->slider, 'BBCode'); ?>>
+<?php     if(++$this->accordiondisplayCnt == $this->accordiondisplay): ?>
+<?php       $this->collapsible = sprintf('jg-details-collapse%1$s', 'BBCode'); ?>
+<?php     endif; ?>
 <?php   endif; ?>
       <div class="accordion-inner form-horizontal">
 <?php   if($this->params->get('bbcode_img')): ?>
@@ -615,14 +651,17 @@ echo JLayoutHelper::render('joomgallery.common.header', $this, '', array('suffix
       if($this->params->get('show_comments_block')): ?>
   <div class="accordion-group">
     <div class="accordion-heading">
-      <?php if(!empty($this->toggler)): ?>
-      <?php   echo sprintf($this->toggler, 'Comments', JText::_('COM_JOOMGALLERY_DETAIL_COMMENTS_EXISTING')); ?>
-      <?php else: ?>
+<?php   if(!empty($this->toggler)): ?>
+<?php     echo sprintf($this->toggler, 'Comments', JText::_('COM_JOOMGALLERY_DETAIL_COMMENTS_EXISTING')); ?>
+<?php   else: ?>
       <h4 class="accordion-toggle"><?php echo JText::_('COM_JOOMGALLERY_DETAIL_COMMENTS_EXISTING'); ?></h4>
-      <?php endif; ?>
+<?php   endif; ?>
     </div>
 <?php   if(!empty($this->slider)): ?>
     <div <?php echo sprintf($this->slider, 'Comments'); ?>>
+<?php     if(++$this->accordiondisplayCnt == $this->accordiondisplay): ?>
+<?php       $this->collapsible = sprintf('jg-details-collapse%1$s', 'Comments'); ?>
+<?php     endif; ?>
 <?php   endif; ?>
       <div class="accordion-inner">
 <?php   if($this->_config->get('jg_showcommentsarea') == 2):
@@ -687,14 +726,17 @@ echo JLayoutHelper::render('joomgallery.common.header', $this, '', array('suffix
       if($this->params->get('show_send2friend_block')): ?>
   <div class="accordion-group">
     <div class="accordion-heading">
-      <?php if(!empty($this->toggler)): ?>
-      <?php   echo sprintf($this->toggler, 'Send2Friend', JText::_('COM_JOOMGALLERY_DETAIL_SENDTOFRIEND')); ?>
-      <?php else: ?>
+<?php   if(!empty($this->toggler)): ?>
+<?php     echo sprintf($this->toggler, 'Send2Friend', JText::_('COM_JOOMGALLERY_DETAIL_SENDTOFRIEND')); ?>
+<?php   else: ?>
       <h4 class="accordion-toggle"><?php echo JText::_('COM_JOOMGALLERY_DETAIL_SENDTOFRIEND'); ?></h4>
-      <?php endif; ?>
+<?php   endif; ?>
     </div>
 <?php   if(!empty($this->slider)): ?>
     <div <?php echo sprintf($this->slider, 'Send2Friend'); ?> >
+<?php     if(++$this->accordiondisplayCnt == $this->accordiondisplay): ?>
+<?php       $this->collapsible = sprintf('jg-details-collapse%1$s', 'Send2Friend'); ?>
+<?php     endif; ?>
 <?php   endif; ?>
       <div class="accordion-inner">
 <?php   if($this->params->get('show_send2friend_form')): ?>
@@ -728,6 +770,17 @@ echo JLayoutHelper::render('joomgallery.common.header', $this, '', array('suffix
     </div>
 <?php   endif; ?>
   </div>
+<?php endif; ?>
+<?php if(!empty($this->collapsible)): ?>
+<?php   $this->_doc->addScriptDeclaration(
+          "
+            jQuery(window).load(function(){
+              jQuery('#" . $this->collapsible . "').collapse({
+                parent: '#jg-details-accordion'
+              });
+              jQuery('#" . $this->collapsible . "').collapse('toggle');
+            });"
+        ); ?>
 <?php endif; ?>
   </div>
 <?php if($this->params->get('show_nametags')): ?>
