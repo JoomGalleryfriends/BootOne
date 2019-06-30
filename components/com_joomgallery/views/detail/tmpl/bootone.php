@@ -210,11 +210,6 @@
   <div class="row-fluid visible-phone jg-detail-navigation">
     <div class="span6 text-center jg-detail-previous-link">
 <?php if($this->params->get('show_previous_link')): ?>
-<?php   if($this->_config->get('jg_cursor_navigation') == 1): ?>
-      <form  name="form_jg_back_link" action="<?php echo $this->pagination['previous']['link']; ?>">
-        <input type="hidden" name="jg_back_link" readonly="readonly" />
-      </form>
-<?php   endif;?>
       <ul class="pager">
         <li><a href="<?php echo $this->pagination['previous']['link']; ?>">
           &larr; <?php echo JText::_('COM_JOOMGALLERY_DETAIL_IMG_PREVIOUS'); ?></a>
@@ -227,11 +222,6 @@
     </div>
     <div class="span6 text-center jg-detail-next-link">
 <?php if($this->params->get('show_next_link')): ?>
-<?php   if($this->_config->get('jg_cursor_navigation') == 1): ?>
-      <form name="form_jg_forward_link" action="<?php echo $this->pagination['next']['link']; ?>">
-        <input type="hidden" name="jg_forward_link" readonly="readonly" />
-      </form>
-<?php   endif;?>
       <ul class="pager">
         <li><a href="<?php echo $this->pagination['next']['link']; ?>">
           <?php echo JText::_('COM_JOOMGALLERY_DETAIL_IMG_NEXT'); ?> &rarr; </a>
