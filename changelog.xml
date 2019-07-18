@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <changelog>
-<release version="3.0.0 BETA1" published="20190415">
+  <release version="3.0.0 BETA2" published="20190718">
+    <entries date="20190610">
+      <logentry type="#">Fix non working image navigation with arrow keys</logentry>
+    </entries>
+    <entries date="20190607">
+      <logentry type="#">fix-wrong-links</logentry>
+    </entries>
+    <entries date="20190603">
+      <logentry type="+">Small improvement</logentry>
+    </entries>
+    <entries date="20190602">
+      <logentry type="#">fix-detail-accordion-initial-tab</logentry>
+    </entries>
+  </release>
+  <release version="3.0.0 BETA1" published="20190415">
     <entries date="20190415">
       <logentry type="+">Add quickedit in user panel</logentry>
       <logentry type="+">Add Icomoon Fonts</logentry>
