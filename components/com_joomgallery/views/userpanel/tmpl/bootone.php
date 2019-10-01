@@ -199,13 +199,13 @@ echo JLayoutHelper::render('joomgallery.common.header', $this, '', array('suffix
               </div>
               <div class="pull-left<?php echo JHTML::_('joomgallery.tip', 'COM_JOOMGALLERY_COMMON_EDIT_IMAGE_TIPTEXT', 'COM_JOOMGALLERY_COMMON_EDIT_IMAGE_TIPCAPTION'); ?>">
                 <a href="<?php echo JRoute::_('index.php?view=edit&id='.$item->id.$this->slimitstart); ?>">
-                  <?php echo JHTML::_('joomgallery.icon', 'edit.png', 'COM_JOOMGALLERY_COMMON_EDIT_IMAGE_TIPCAPTION'); ?></a>
+                  <span class="icon-edit"></span></a>
               </div>
 <?php       endif;
             if($item->show_delete_icon): ?>
             <div class="pull-left<?php echo JHTML::_('joomgallery.tip', 'COM_JOOMGALLERY_COMMON_DELETE_IMAGE_TIPTEXT', 'COM_JOOMGALLERY_COMMON_DELETE_IMAGE_TIPCAPTION'); ?>">
               <a href="javascript:if(confirm('<?php echo JText::_('COM_JOOMGALLERY_COMMON_ALERT_SURE_DELETE_SELECTED_ITEM', true); ?>')){ location.href='<?php echo JRoute::_('index.php?task=image.delete&id='.$item->id.$this->slimitstart, false);?>';}">
-                <?php echo JHTML::_('joomgallery.icon', 'edit_trash.png', 'COM_JOOMGALLERY_COMMON_DELETE'); ?></a>
+                <span class="icon-delete"></span></a>
             </div>
 <?php       endif; ?>
           </td>
