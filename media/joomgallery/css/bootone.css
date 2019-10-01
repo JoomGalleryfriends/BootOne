@@ -111,9 +111,27 @@
 }
 
 .jg_starrating_cat, .jg_starrating_fav, .jg_starrating_top, .jg_starrating_search{
-	margin:0 auto;
+  margin:0 auto;
 }
 
 .jg-icon-disabled .icon-lightning{
   color:grey;
+}
+
+.jg-gallerystats [class^="jg-gallerystats-"]{
+  margin:.25em auto .1em auto;
+}
+
+#jg-slideshow-controls [class^="icon-"]{
+  margin:.5em auto .4em auto;
+}
+
+#jg-slideshow-controls [class^="icon-"], .jg-iconbar [class^="icon-"]{
+  margin-left:.35em;
+  margin-right:.35em;
+}
+
+.jg_userpanelview [class^="icon-"]{
+  margin-left:.25em;
+  margin-right:.5em;
 }
