@@ -30,7 +30,7 @@ echo JLayoutHelper::render('joomgallery.common.header', $this, '', array('suffix
       <li class="span<?php echo (int) (12 / $this->_config->get('jg_toplistcols')); ?>">
         <div class="thumbnail">
           <a href="<?php echo $row->link; ?>" <?php echo $row->atagtitle; ?>>
-            <img src="<?php echo $row->thumb_src; ?>" alt="<?php echo $row->imgtitle; ?>" /></a>
+            <img src="<?php echo $row->thumb_src; ?>" alt="<?php echo $row->imgtitle; ?>" loading="lazy" /></a>
           <div class="caption">
             <ul class="unstyled text-center">
               <li>
