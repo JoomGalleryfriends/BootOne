@@ -53,7 +53,7 @@
         <div class="thumbnail">
 <?php     if($this->_config->get('jg_showsubthumbs') && $row->thumb_src): ?>
           <a title="<?php echo $row->name; ?>" href="<?php echo $row->link; ?>">
-            <img src="<?php echo $row->thumb_src; ?>" hspace="4" vspace="0" alt="<?php echo $row->name; ?>" />
+            <img src="<?php echo $row->thumb_src; ?>" hspace="4" vspace="0" alt="<?php echo $row->name; ?>" loading="lazy" />
           </a>
 <?php     endif; ?>
           <div class="caption">
