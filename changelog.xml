@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <changelog>
+  <release version="3.0.0 BETA4" published="20210412">
+    <entries date="20210208">
+      <logentry type="+">Add HTML attribute lazy loading to thumbnails in frontend</logentry>
+    </entries>
+  </release>
   <release version="3.0.0 BETA3" published="20201127">
     <entries date="20201127">
       <logentry type="+">Makes the display of maps in the detail view GDPR compliant</logentry>
