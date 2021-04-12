@@ -31,11 +31,11 @@
       <div class="col-md-<?php echo (int) (12 / $column); ?>">
 <?php     if(!$row->show_elems): ?>
           <a <?php echo $row->atagtitle; ?> href="<?php echo $row->link; ?>" class="thumbnail">
-            <img src="<?php echo $row->thumb_src; ?>" <?php echo $row->imgwh; ?> alt="<?php echo $row->imgtitle; ?>" /></a>
+            <img src="<?php echo $row->thumb_src; ?>" <?php echo $row->imgwh; ?> alt="<?php echo $row->imgtitle; ?>" loading="lazy" /></a>
 <?php     else: ?>
         <div class="thumbnail">
           <a <?php echo $row->atagtitle; ?> href="<?php echo $row->link; ?>">
-            <img src="<?php echo $row->thumb_src; ?>" <?php echo $row->imgwh; ?> alt="<?php echo $row->imgtitle; ?>" /></a>
+            <img src="<?php echo $row->thumb_src; ?>" <?php echo $row->imgwh; ?> alt="<?php echo $row->imgtitle; ?>" loading="lazy" /></a>
           <div class="caption">
             <ul class="list-unstyled text-center">
 <?php     if($this->_config->get('jg_showtitle') || ($this->_config->get('jg_showpicasnew') && $row->isnew)): ?>

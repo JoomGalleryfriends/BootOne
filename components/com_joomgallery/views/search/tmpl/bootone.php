@@ -22,7 +22,7 @@ echo JLayoutHelper::render('joomgallery.common.header', $this, '', array('suffix
       <div class="col-md-<?php echo (int) (12 / $this->_config->get('jg_searchcols')); ?>">
         <div class="thumbnail">
           <a <?php echo $row->atagtitle; ?> href="<?php echo $row->link; ?>">
-            <img src="<?php echo $row->thumb_src; ?>" alt="<?php echo $row->imgtitle; ?>" />
+            <img src="<?php echo $row->thumb_src; ?>" alt="<?php echo $row->imgtitle; ?>" loading="lazy" />
           </a>
           <div class="caption">
             <ul class="list-unstyled text-center">
