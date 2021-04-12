@@ -34,7 +34,7 @@ echo JLayoutHelper::render('joomgallery.common.header', $this, '', array('suffix
       <div class="thumbnail">
 <?php     if($row->thumb_src): ?>
         <a title="<?php echo $row->name; ?>" href="<?php echo $row->link ?>">
-          <img src="<?php echo $row->thumb_src; ?>" alt="<?php echo $row->name; ?>" /></a>
+          <img src="<?php echo $row->thumb_src; ?>" alt="<?php echo $row->name; ?>" loading="lazy" /></a>
 <?php     endif; ?>
       <div class="caption">
         <ul class="unstyled">

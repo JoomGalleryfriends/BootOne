@@ -266,7 +266,7 @@
           if($row->id == $this->image->id):
             $cssid = ' id="jg_mini_akt"';
           endif; ?>
-            <img src="<?php echo $this->_ambit->getImg('thumb_url', $row); ?>"<?php echo $cssid; ?> class="jg_minipic" alt="<?php echo $row->imgtitle; ?>" /></a>
+            <img src="<?php echo $this->_ambit->getImg('thumb_url', $row); ?>"<?php echo $cssid; ?> class="jg_minipic" alt="<?php echo $row->imgtitle; ?>" loading="lazy" /></a>
 <?php     if($this->_config->get('jg_motionminis') == 2): ?>
         </li>
 <?php     endif; ?>
